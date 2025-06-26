@@ -4,6 +4,7 @@ import { SplitText } from "gsap/SplitText";
 import { memo, useRef } from "react";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { IoSearchOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const Nav = () => {
       const title = useRef(null);
       const desc = useRef(null);
@@ -40,7 +41,9 @@ const Nav = () => {
                               our word is amazing
                         </p>
                   </div>
-                  <IoSearchOutline className="cursor-pointer" size="2.5rem" color="#3D5557" />
+                  <Link to="/search-for-photo">
+                        <IoSearchOutline className="cursor-pointer" size="2.5rem" color="#3D5557" />
+                  </Link>
             </section>
       );
 };

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import ImageView from "./pages/ImageView";
 import LocomotiveScroll from "locomotive-scroll";
 import Home from "./components/Home";
+import Search from "./pages/Search";
 
 const App = () => {
       new LocomotiveScroll();
@@ -18,6 +19,7 @@ const App = () => {
                                     </div>
                               }
                         />
+                        <Route path="/search-for-photo" element={<Search />} />
                   </Routes>
             </main>
       );

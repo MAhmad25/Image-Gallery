@@ -5,7 +5,7 @@ const Close = () => {
       const navigate = useNavigate();
       return (
             <StyledWrapper>
-                  <button onClick={() => navigate("/")} className="button flex p-5 py-3 hover:text-white justify-center bg-black items-center rounded-full">
+                  <button onClick={() => navigate(-1)} className="button flex p-5 py-3 hover:text-white justify-center bg-black items-center rounded-full">
                         <h1 className="font-Nova text-zinc-200 hover:text-white text-2xl  uppercase"> X </h1>
                         <div className="close">Close</div>
                   </button>
