@@ -1,7 +1,4 @@
 @import "tailwindcss";
-.column {
-      column-width: 250px;
-}
 @font-face {
       font-family: Nova;
       src: url(../fonts/primary.ttf);

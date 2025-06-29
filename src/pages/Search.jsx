@@ -39,7 +39,7 @@ const Search = () => {
                   </div>
                   {/* Image Result Div */}
                   <h1 className="text-2xl font-Nova text-zinc-800 mb-5">Showing Result for 3D Wallpaper...</h1>
-                  <section className="w-full  pb-10 column">
+                  <section className="w-full  pb-10 columns-[250px]">
                         {pictures.map((picture) => (
                               <Image key={picture.id} picture={picture} />
                         ))}

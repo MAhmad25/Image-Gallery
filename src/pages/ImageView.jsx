@@ -129,7 +129,7 @@ const ImageView = () => {
                   {/* Related Image Section */}
                   <section className="w-full px-10   py-5  shrink-0">
                         <h1 className="text-5xl font-Nova">Related Images</h1>
-                        <section className="w-full py-5 pb-10 column">
+                        <section className="w-full py-5 pb-10 columns-[250px]">
                               {relatedImage.results.map((picture) => (
                                     <Image key={picture.id} picture={picture} />
                               ))}
