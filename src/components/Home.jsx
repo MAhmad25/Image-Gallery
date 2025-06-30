@@ -10,7 +10,7 @@ const Home = () => {
       useGSAP(() => {
             const imageArr = gsap.utils.toArray(imageCollec.current.childNodes);
             gsap.from(imageArr, {
-                  filter: "blur(100px)",
+                  filter: "blur(20px)",
                   duration: 0.8,
                   stagger: 0.05,
             });

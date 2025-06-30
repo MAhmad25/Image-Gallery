@@ -43,39 +43,40 @@ const ImageView = () => {
             window.scrollTo(0, 0);
       }, []);
       return (
-            <section className="w-full bg-white scroll-smooth relative">
-                  <div className=" fixed top-3 right-3">
+            <section className="w-full bg-white overflow-hidden  scroll-smooth relative">
+                  <div className="fixed z-20 top-3 right-3">
                         <Close />
                   </div>
                   {/* Head of Image */}
-                  <section className="flex py-10  h-screen w-full">
-                        {/* User Section */}
-                        <section className="w-1/4 px-10 h-full  shrink-0 ">
-                              <div className="flex gap-2 px-10 items-center">
-                                    <img className="rounded-full w-10 h-10  object-cover" src="https://images.unsplash.com/profile-1698461695925-efb929ec6179image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128" alt="user" />
-                                    <div className="flex flex-col relative">
-                                          <h1 className="text-black text-2xl leading-none capitalize tracking-tight ">rishi</h1>
-                                          <GrValidate className="absolute right-5" />
-                                          <p className="text-zinc-500">beingabstrac</p>
+                  <section className="py-10 flex flex-col items-center  gap-5 sm:gap-0   sm:h-screen  w-full">
+                        {/* Top User ------ Download Button */}
+                        <div className="w-full   flex order-2 justify-between items-center">
+                              {/* User Section */}
+                              <section className="sm:px-10 px-5">
+                                    <div className="flex gap-2 sm:px-10 items-center">
+                                          <img className="rounded-full w-10 h-10  object-cover" src="https://images.unsplash.com/profile-1698461695925-efb929ec6179image?ixlib=rb-4.1.0&crop=faces&fit=crop&w=128&h=128" alt="user" />
+                                          <div className="flex flex-col relative">
+                                                <h1 className="text-black sm:text-2xl leading-none capitalize tracking-tight ">rishi</h1>
+                                                <GrValidate className="absolute right-5" />
+                                                <p className="text-zinc-500 text-sm sm:text-lg">beingabstrac</p>
+                                          </div>
                                     </div>
-                              </div>
-                        </section>
+                              </section>
+                              {/* Dowload Section */}
+                              <Download />
+                        </div>
                         {/* Image Section */}
-                        <section onMouseEnter={show} onMouseLeave={hide} className="w-2/4  overflow-hidden relative h-full shrink-0 ">
-                              <div ref={mask} className="absolute origin-top z-20  top-0 left-0 bg-black w-full h-[calc(100vh-32px-20px)]"></div>
+                        <section onMouseEnter={show} onMouseLeave={hide} className="sm:w-2/4 w-3/4  sm:order-2  overflow-hidden relative h-[50vh] sm:h-full shrink-0 ">
+                              <div ref={mask} className="absolute origin-top z-40 w-full h-full top-0 left-0 bg-black"></div>
                               <div ref={likecta} className="absolute scale-0 place-content-center grid top-0 left-0  z-10 w-full h-full bg-black/20">
                                     <LikeButton />
                               </div>
-                              <img data-scroll data-scroll-speed="-0.4" ref={img} className="w-full scale-125 absolute h-[calc(100vh-32px-20px)] object-cover" src="https://images.unsplash.com/photo-1743601567013-b72682fdc511?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NjYxNjl8MHwxfGFsbHwxfHx8fHx8fHwxNzUwNzQ0MjgyfA&ixlib=rb-4.1.0&q=85" width={2448} height={3264} alt="Testing Pic" />
-                        </section>
-                        {/* Dowload Section */}
-                        <section className="w-1/4 flex flex-col px-10 h-full shrink-0 ">
-                              <Download />
+                              <img ref={img} className="scale-125 w-full h-full absolute object-cover" src="https://images.unsplash.com/photo-1749802449762-5e428ccf9a45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjYxNjl8MHwxfGFsbHw5fHx8fHx8fHwxNzUwNzQ0MjgyfA&ixlib=rb-4.1.0&q=80&w=400" width={9024} height={6016} alt="Testing Pic" />
                         </section>
                   </section>
                   {/* Info Section */}
-                  <section className="w-full px-10   py-5  shrink-0 ">
-                        <div className="w-full  flex gap-10 items-center">
+                  <section className="w-full sm:px-10 px-5  sm:py-5  shrink-0 ">
+                        <div className="w-full flex flex-wrap sm:flex-nowrap gap-5 sm:gap-10 sm:items-center">
                               <Detail2 Icon={GrLike} desc={"Likes"} value={123} />
                               <Detail2 Icon={GoEye} desc={"Views"} value={12} />
                               <Detail2 Icon={LiaDownloadSolid} desc={"Downloads"} value={12} />
@@ -87,48 +88,48 @@ const ImageView = () => {
                               <Detail Icon={FaRegCalendar} desc={"Published on:  "} value={"2025-01-03"} />
                               <Detail Icon={GrUpdate} desc={"Updated at:  "} value={"2025-01-03"} />
                         </div>
-                        <div className="mt-5 flex flex-wrap w-3/4 gap-2 ">
+                        <div className="mt-5 flex flex-wrap sm:w-3/4 gap-2 ">
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                               <Link className="shrink-0">
-                                    <div className="py-3 px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
+                                    <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">Morrcoc</div>
                               </Link>
                         </div>
                   </section>
                   {/* Related Image Section */}
                   <section className="w-full px-10   py-5  shrink-0">
-                        <h1 className="text-5xl font-Nova">Related Images</h1>
+                        <h1 className="tsm:ext-5xl text-3xl font-Nova">Related Images</h1>
                         <section className="w-full py-5 pb-10 columns-[250px]">
                               {relatedImage.results.map((picture) => (
                                     <Image key={picture.id} picture={picture} />

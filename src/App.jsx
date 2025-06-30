@@ -15,7 +15,7 @@ const App = () => {
             window.addEventListener("resize", handleResize);
       }, []);
       return (
-            <main className="w-full min-h-screen relative   flex flex-col ">
+            <main className="w-full min-h-screen relative  flex flex-col ">
                   <div className="fixed bottom-0 left-10 px-14 z-30 py-4 rounded-4xl bg-black text-white font-Nova text-2xl">{currWidth}px</div>
                   <Routes>
                         <Route path="/" element={<Home />} />
@@ -23,7 +23,7 @@ const App = () => {
                         <Route
                               path="/view/:id"
                               element={
-                                    <div className="px-10 pt-5 bg-zinc-200 pb-10">
+                                    <div className="sm:px-10 pt-5 bg-zinc-200 pb-10">
                                           <ImageView />
                                     </div>
                               }
