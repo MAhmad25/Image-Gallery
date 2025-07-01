@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 const Image = ({ picture }) => {
       return (
             <div key={picture.id} className={`mb-4 overflow-hidden relative cursor-zoom-in`}>

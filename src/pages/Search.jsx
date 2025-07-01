@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { pictures } from "../../TestingData";
 import Image from "../components/Image";
-import Close from "../components/CloseButton";
+import Close from "../components/Buttons/CloseButton";
 import { useGSAP } from "@gsap/react";
 
 const Search = () => {
