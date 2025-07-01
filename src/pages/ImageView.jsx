@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { relatedImage } from "../../RelatedImage";
 import Image from "../components/Image";
 import Close from "../components/CloseButton";
+import LiquidGlass from "../components/LiquidGlass";
 const ImageView = () => {
       const mask = useRef(null);
       const img = useRef(null);
@@ -44,13 +45,14 @@ const ImageView = () => {
       }, []);
       return (
             <section className="w-full bg-white overflow-hidden  scroll-smooth relative">
+                  <LiquidGlass />
                   <div className="fixed z-20 top-3 right-3">
                         <Close />
                   </div>
                   {/* Head of Image */}
-                  <section className="py-10 flex flex-col items-center  gap-5 sm:gap-0   sm:h-screen  w-full">
+                  <section className="py-10 flex flex-col items-center  gap-5 sm:gap-3 md:gap-5 min-h-[50vh]   sm:h-screen  w-full">
                         {/* Top User ------ Download Button */}
-                        <div className="w-full   flex order-2 justify-between items-center">
+                        <div className="w-full flex order-2  justify-between items-center">
                               {/* User Section */}
                               <section className="sm:px-10 px-5">
                                     <div className="flex gap-2 sm:px-10 items-center">
@@ -66,7 +68,7 @@ const ImageView = () => {
                               <Download />
                         </div>
                         {/* Image Section */}
-                        <section onMouseEnter={show} onMouseLeave={hide} className="sm:w-2/4 w-3/4  sm:order-2  overflow-hidden relative h-[50vh] sm:h-full shrink-0 ">
+                        <section onMouseEnter={show} onMouseLeave={hide} className="min-[550px]:w-1/2 sm:w-[80%] w-3/4  sm:order-2  overflow-hidden relative h-[50vh] sm:h-[75vh]  min-[550px]:h-[50vh] shrink-0 ">
                               <div ref={mask} className="absolute origin-top z-40 w-full h-full top-0 left-0 bg-black"></div>
                               <div ref={likecta} className="absolute scale-0 place-content-center grid top-0 left-0  z-10 w-full h-full bg-black/20">
                                     <LikeButton />
@@ -75,8 +77,8 @@ const ImageView = () => {
                         </section>
                   </section>
                   {/* Info Section */}
-                  <section className="w-full sm:px-10 px-5  sm:py-5  shrink-0 ">
-                        <div className="w-full flex flex-wrap sm:flex-nowrap gap-5 sm:gap-10 sm:items-center">
+                  <section className="w-full min-[550]:px-10 px-5  min-[550px]:py-5  shrink-0 ">
+                        <div className="w-full flex flex-wrap sm:flex-nowrap gap-5 min-[550px]:gap-10 sm:gap-4 md:gap-10 sm:items-center">
                               <Detail2 Icon={GrLike} desc={"Likes"} value={123} />
                               <Detail2 Icon={GoEye} desc={"Views"} value={12} />
                               <Detail2 Icon={LiaDownloadSolid} desc={"Downloads"} value={12} />
@@ -128,7 +130,7 @@ const ImageView = () => {
                         </div>
                   </section>
                   {/* Related Image Section */}
-                  <section className="w-full px-10   py-5  shrink-0">
+                  <section className="w-full px-5 py-5  shrink-0">
                         <h1 className="tsm:ext-5xl text-3xl font-Nova">Related Images</h1>
                         <section className="w-full py-5 pb-10 columns-[250px]">
                               {relatedImage.results.map((picture) => (
