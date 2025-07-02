@@ -1,29 +1,29 @@
-import { memo, useRef } from "react";
-import { pictures } from "../../TestingData";
+import { memo, useEffect, useState } from "react";
 import Nav from "./Nav";
 import Image from "./Image";
 import Type from "./Type";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import axios from "axios";
+import Loader from "./Loader";
 const Home = () => {
-      const imageCollec = useRef(null);
-      useGSAP(() => {
-            const imageArr = gsap.utils.toArray(imageCollec.current.childNodes);
-            gsap.from(imageArr, {
-                  filter: "blur(20px)",
-                  duration: 0.8,
-                  stagger: 0.05,
-            });
+      const [picture, setPictures] = useState([]);
+      useEffect(() => {
+            (async () => {
+                  try {
+                        console.log("Getting Data");
+                        const { data } = await axios.get(`${import.meta.env.VITE_BASE_URL}photos?page=1&per_page=30&client_id=${import.meta.env.VITE_KEY}`);
+                        console.log("Data agya");
+                        setPictures(data);
+                  } catch (error) {
+                        console.log(error.message);
+                  }
+            })();
       }, []);
+      console.log(picture);
       return (
             <>
                   <Nav />
                   <Type />
-                  <section ref={imageCollec} className="w-full px-10 pb-10 columns-[250px]">
-                        {pictures.map((picture) => (
-                              <Image key={picture.id} picture={picture} />
-                        ))}
-                  </section>
+                  <section className="w-full px-10 pb-10 columns-[250px]">{picture.length > 0 ? picture.map((picture) => <Image key={picture.id} picture={picture} />) : <Loader />}</section>
             </>
       );
 };

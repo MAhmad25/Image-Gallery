@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useRef } from "react";
-import { pictures } from "../../TestingData";
+import { pictures } from "../../Pictures";
 import Image from "../components/Image";
 import Close from "../components/Buttons/CloseButton";
 import { useGSAP } from "@gsap/react";
