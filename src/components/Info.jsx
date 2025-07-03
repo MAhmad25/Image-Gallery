@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const Detail = ({ desc, Icon, value }) => {
+const Info = ({ desc, Icon, value }) => {
       return (
             <div className="w-full flex items-center gap-1 ">
                   <Icon size="1rem" color="black" />
@@ -9,5 +9,4 @@ const Detail = ({ desc, Icon, value }) => {
             </div>
       );
 };
-
-export default Detail;
+export default Info;

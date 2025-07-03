@@ -1,9 +1,8 @@
 import { FaRegCalendar } from "react-icons/fa";
 import { GrUpdate } from "react-icons/gr";
 import { GrValidate } from "react-icons/gr";
-import Detail from "../components/detail";
 import { GoEye } from "react-icons/go";
-import Detail2 from "../components/Detail2";
+import ImageStats from "../components/ImageStats";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { IoLocationOutline } from "react-icons/io5";
 import { GrLike } from "react-icons/gr";
@@ -18,20 +17,25 @@ import { relatedImage } from "../../RelatedImage";
 import Image from "../components/Image";
 import Close from "../components/Buttons/CloseButton";
 import LiquidGlass from "../components/LiquidGlass";
+import Info from "../components/Info";
+import LocomotiveScroll from "locomotive-scroll";
 const ImageView = () => {
+      new LocomotiveScroll();
       const mask = useRef(null);
       const img = useRef(null);
       const likecta = useRef(null);
-      const show = () => {
+      const { contextSafe } = useGSAP();
+      const show = contextSafe(() => {
             gsap.set(likecta.current, { scale: 1 });
-      };
-      const hide = () => {
+      });
+      const hide = contextSafe(() => {
             gsap.set(likecta.current, { scale: 0 });
-      };
+      });
       useGSAP(() => {
             let tl = gsap.timeline({ defaults: { duration: 1.3, ease: "expo.inOut" } });
             tl.to(mask.current, {
                   scaleY: 0,
+                  delay: 0.3,
             }).to(
                   img.current,
                   {
@@ -39,12 +43,12 @@ const ImageView = () => {
                   },
                   "-=.9"
             );
-      }, []);
+      });
       useEffect(() => {
             window.scrollTo(0, 0);
       }, []);
       return (
-            <section className="w-full bg-white overflow-hidden  scroll-smooth relative">
+            <section className="w-full bg-white overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative">
                   <LiquidGlass />
                   <div className="fixed z-20 top-3 right-3">
                         <Close />
@@ -73,22 +77,22 @@ const ImageView = () => {
                               <div ref={likecta} className="absolute scale-0 place-content-center grid top-0 left-0  z-10 w-full h-full bg-black/20">
                                     <LikeButton />
                               </div>
-                              <img ref={img} className="scale-125 w-full h-full absolute object-cover" src="https://images.unsplash.com/photo-1749802449762-5e428ccf9a45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjYxNjl8MHwxfGFsbHw5fHx8fHx8fHwxNzUwNzQ0MjgyfA&ixlib=rb-4.1.0&q=80&w=400" width={9024} height={6016} alt="Testing Pic" />
+                              <img ref={img} data-scroll data-scroll-speed="-0.1" className="scale-125 w-full h-full absolute object-cover" src="https://images.unsplash.com/photo-1749802449762-5e428ccf9a45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjYxNjl8MHwxfGFsbHw5fHx8fHx8fHwxNzUwNzQ0MjgyfA&ixlib=rb-4.1.0&q=80&w=400" width={9024} height={6016} alt="Testing Pic" />
                         </section>
                   </section>
                   {/* Info Section */}
                   <section className="w-full min-[550]:px-10 px-5  min-[550px]:py-5  shrink-0 ">
                         <div className="w-full flex flex-wrap sm:flex-nowrap gap-5 min-[550px]:gap-10 sm:gap-4 md:gap-10 sm:items-center">
-                              <Detail2 Icon={GrLike} desc={"Likes"} value={123} />
-                              <Detail2 Icon={GoEye} desc={"Views"} value={12} />
-                              <Detail2 Icon={LiaDownloadSolid} desc={"Downloads"} value={12} />
+                              <ImageStats Icon={GrLike} desc={"Likes"} value={123} />
+                              <ImageStats Icon={GoEye} desc={"Views"} value={12} />
+                              <ImageStats Icon={LiaDownloadSolid} desc={"Downloads"} value={12} />
                               <Share />
                         </div>
                         <p className="text-black/90 mt-4 font-Nova">Gas station with red neons in the desert at night in Annakhil, Marrakesh, Morocco.</p>
                         <div className="mt-5">
-                              <Detail Icon={IoLocationOutline} desc={"Annakhil, Marrakesh, Morocco"} />
-                              <Detail Icon={FaRegCalendar} desc={"Published on:  "} value={"2025-01-03"} />
-                              <Detail Icon={GrUpdate} desc={"Updated at:  "} value={"2025-01-03"} />
+                              <Info Icon={IoLocationOutline} desc={"Annakhil, Marrakesh, Morocco"} />
+                              <Info Icon={FaRegCalendar} desc={"Published on:  "} value={"2025-01-03"} />
+                              <Info Icon={GrUpdate} desc={"Updated at:  "} value={"2025-01-03"} />
                         </div>
                         <div className="mt-5 flex flex-wrap sm:w-3/4 gap-2 ">
                               <Link className="shrink-0">

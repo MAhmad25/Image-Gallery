@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { NavLink } from "react-router-dom";
 const Type = () => {
       return (
@@ -23,4 +24,4 @@ const Type = () => {
       );
 };
 
-export default Type;
+export default memo(Type);

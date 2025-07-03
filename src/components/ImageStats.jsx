@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const Detail2 = ({ Icon, desc, value }) => {
+const ImageStats = ({ Icon, desc, value }) => {
       return (
             <div className="flex shrink-0 sm:shrink items-center gap-2">
                   <Icon />
@@ -10,4 +10,4 @@ const Detail2 = ({ Icon, desc, value }) => {
       );
 };
 
-export default Detail2;
+export default ImageStats;

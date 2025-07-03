@@ -4,7 +4,9 @@ import Image from "./Image";
 import Type from "./Type";
 import axios from "axios";
 import Loader from "./Loader";
+import LocomotiveScroll from "locomotive-scroll";
 const Home = () => {
+      new LocomotiveScroll();
       const [picture, setPictures] = useState([]);
       useEffect(() => {
             (async () => {
@@ -23,7 +25,7 @@ const Home = () => {
             <>
                   <Nav />
                   <Type />
-                  <section className="w-full px-10 pb-10 columns-[250px]">{picture.length > 0 ? picture.map((picture) => <Image key={picture.id} picture={picture} />) : <Loader />}</section>
+                  <section className="w-full px-10  pb-10 columns-[250px]">{picture.length > 0 ? picture.map((picture) => <Image key={picture.id} picture={picture} />) : <Loader />}</section>
             </>
       );
 };
