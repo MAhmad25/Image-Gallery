@@ -6,6 +6,7 @@ import Search from "./pages/Search";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import { Toaster } from "react-hot-toast";
 const App = () => {
       const preloaderText = useRef(null);
       const preloaderContainer = useRef(null);
@@ -25,7 +26,7 @@ const App = () => {
                         sessionStorage.setItem("introPlayed", "true");
                   },
             });
-            preloader.to(preloaderText.current, { y: "0rem", delay: 0.1 }).to(preloaderText.current, { y: "-5rem" }, "+=0.2").to(preloaderContainer.current, { scaleY: 0, ease: "expo.inOut" });
+            preloader.to(preloaderText.current, { y: "0rem", delay: 0.3 }).to(preloaderText.current, { y: "-5rem" }, "+=0.2").to(preloaderContainer.current, { scaleY: 0, ease: "expo.inOut" });
             tlRef.current = preloader;
             return () => preloader.kill();
       });
@@ -40,7 +41,6 @@ const App = () => {
                   </div>
                   <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/topics/:type/photos" element={<Home />} />
                         <Route
                               path="/view/:id"
                               element={
@@ -51,6 +51,7 @@ const App = () => {
                         />
                         <Route path="/search-for-photo" element={<Search />} />
                   </Routes>
+                  <Toaster />
             </main>
       );
 };
