@@ -1,6 +1,6 @@
 import { memo } from "react";
-import Nav from "./Nav";
-import MasonaryLayout from "./MasonaryLayout";
+import Nav from "../components/Nav";
+import MasonaryLayout from "../components/MasonaryLayout";
 
 const Home = () => {
       return (

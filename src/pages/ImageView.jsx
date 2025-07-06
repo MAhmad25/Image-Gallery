@@ -78,7 +78,7 @@ const ImageView = () => {
                                     </div>
                               </section>
                               {/* Dowload Section */}
-                              <Download />
+                              <Download photoid={imgDetail?.id} />
                         </div>
                         {/* Image Section */}
                         <section onMouseEnter={show} onMouseLeave={hide} className={`${imgDetail?.width >= imgDetail?.height ? "columns-[400px] sm:columns-[600px]" : "columns-[250px] sm:columns-[300px]"}  sm:order-2   overflow-hidden h-[50vh] sm:h-[75vh]  min-[550px]:h-[50vh] relative shrink-0`}>

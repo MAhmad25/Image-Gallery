@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ImageView from "./pages/ImageView";
 import LocomotiveScroll from "locomotive-scroll";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Search from "./pages/Search";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
