@@ -42,7 +42,7 @@ const App = () => {
                   <Routes>
                         <Route path="/" element={<Home />} />
                         <Route
-                              path="/view/:id"
+                              path="/view-photo/:id"
                               element={
                                     <div className="sm:px-10 pt-5 bg-zinc-200 pb-10">
                                           <ImageView />

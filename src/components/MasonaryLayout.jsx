@@ -1,4 +1,4 @@
-import Loader from "./Loader";
+import Loader from "../components/Loaders/Loader";
 import Image from "./Image";
 import { useContext } from "react";
 import ImageContext from "../contexts/ImageContext";
@@ -17,7 +17,7 @@ const MasonaryLayout = () => {
                         ))}
                   </section>
                   <section className="w-full px-10 pb-10 columns-[250px]">{pictures.length > 0 ? pictures.map((picture) => <Image key={picture.id} picture={picture} />) : <Loader />}</section>
-                  <button className="outline-none rounded-2xl w-40 mb-5 mx-auto border-none text-zinc-200 bg-zinc-900 py-2" onClick={fetchMore}>
+                  <button className="outline-none cursor-pointer font-Astralaga  rounded-xl w-40 mb-5 mx-auto border-none text-zinc-200 bg-zinc-900 py-2" onClick={fetchMore}>
                         Load More
                   </button>
             </>
