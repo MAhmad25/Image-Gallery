@@ -6,7 +6,6 @@ import ImageStats from "../components/ImageStats";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { IoLocationOutline } from "react-icons/io5";
 import { GrLike } from "react-icons/gr";
-import Share from "../components/Buttons/Share";
 import { useEffect, useRef } from "react";
 import Download from "../components/Buttons/Download";
 import LikeButton from "../components/Buttons/LikeButton";
@@ -21,6 +20,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import ViewLoader from "../components/Loaders/ViewLoader";
 import useFetchDetail from "../hooks/useFetchDetail";
 import useFetchRelated from "../hooks/useFetchRelated";
+import ShareButton from "../components/Buttons/ShareButton";
 const ImageView = () => {
       const { id } = useParams();
       new LocomotiveScroll();
@@ -53,6 +53,7 @@ const ImageView = () => {
             },
             { dependencies: [imgDetail], revertOnUpdate: true }
       );
+
       useEffect(() => {
             window.scrollTo(0, 0);
       }, [id]);
@@ -78,7 +79,9 @@ const ImageView = () => {
                                     </div>
                               </section>
                               {/* Dowload Section */}
-                              <Download photoid={imgDetail?.id} />
+                              <div className="mr-5">
+                                    <Download photoid={imgDetail?.id} />
+                              </div>
                         </div>
                         {/* Image Section */}
                         <section onMouseEnter={show} onMouseLeave={hide} className={`${imgDetail?.width >= imgDetail?.height ? "columns-[400px] sm:columns-[600px]" : "columns-[250px] sm:columns-[300px]"}  sm:order-2   overflow-hidden h-[50vh] sm:h-[75vh]  min-[550px]:h-[50vh] relative shrink-0`}>
@@ -96,18 +99,18 @@ const ImageView = () => {
                               <ImageStats Icon={GrLike} desc={"Likes"} value={imgDetail.likes} />
                               <ImageStats Icon={GoEye} desc={"Views"} value={imgDetail.views} />
                               <ImageStats Icon={LiaDownloadSolid} desc={"Downloads"} value={imgDetail.downloads} />
-                              <Share />
+                              <ShareButton />
                         </div>
                         <p className="text-black/90 mt-4 font-Nova">{(imgDetail?.description?.length > 7 && imgDetail.description) || imgDetail?.alt_description}</p>
                         <div className="mt-5">
-                              {imgDetail?.location.name && <Info Icon={IoLocationOutline} desc={"Location:  "} value={imgDetail?.location?.name} />}
+                              {imgDetail?.location?.name && <Info Icon={IoLocationOutline} desc={"Location:  "} value={imgDetail?.location?.name} />}
                               <Info Icon={FaRegCalendar} desc={"Published on:  "} value={imgDetail?.created_at?.split("T")[0]} />
                               <Info Icon={GrUpdate} desc={"Updated at:  "} value={imgDetail?.updated_at?.split("T")[0]} />
                         </div>
                         <div className="mt-5 flex flex-wrap sm:w-3/4 gap-2 ">
                               {imgDetail?.tags?.map((tag, index) => (
                                     <Link to={"/search-for-photo"} key={index} className="shrink-0">
-                                          <div className=" py-2 px-1 text-sm sm:text-lg sm:py-3 sm:px-2 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">{tag.title}</div>
+                                          <div className="py-1 px-3 text-sm sm:text-lg sm:py-2 sm:px-4 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">{tag.title}</div>
                                     </Link>
                               ))}
                         </div>

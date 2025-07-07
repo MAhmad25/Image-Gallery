@@ -1,7 +1,7 @@
 import splash from "../axios/axios";
 import toast from "react-hot-toast";
-const handleClick = async (photoid) => {
-      const toastId = toast.loading("Preparing download…");
+const handleDownload = async (photoid) => {
+      const toastId = toast.loading("Downloading....");
       try {
             const TRACK = await splash.get(`/photos/${photoid}/download`);
             const downloadUrl = TRACK.data.url;
@@ -16,9 +16,9 @@ const handleClick = async (photoid) => {
             a.click();
             URL.revokeObjectURL(blobUrl);
             a.remove();
-            toast.success("Download started", { id: toastId });
+            toast.success("Check your gallery", { id: toastId });
       } catch (err) {
             toast.error("Download error: " + err.message, { id: toastId });
       }
 };
-export default handleClick;
+export default handleDownload;

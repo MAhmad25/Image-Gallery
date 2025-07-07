@@ -1,48 +1,105 @@
 import styled from "styled-components";
-import handleCick from "../../utils/handleClick";
+import handleDownload from "../../utils/handleDownload";
 const Download = ({ photoid }) => {
       return (
             <StyledWrapper>
-                  <div className="cursor-pointer" onClick={() => handleCick(photoid)}>
-                        <h1 className="text-sm sm:text-lg">Download</h1>
-                        <svg viewBox="0 0 256 256" height={32} width={38} xmlns="http://www.w3.org/2000/svg">
-                              <path d="M74.34 85.66a8 8 0 0 1 11.32-11.32L120 108.69V24a8 8 0 0 1 16 0v84.69l34.34-34.35a8 8 0 0 1 11.32 11.32l-48 48a8 8 0 0 1-11.32 0ZM240 136v64a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h52.4a4 4 0 0 1 2.83 1.17L111 145a24 24 0 0 0 34 0l23.8-23.8a4 4 0 0 1 2.8-1.2H224a16 16 0 0 1 16 16m-40 32a12 12 0 1 0-12 12a12 12 0 0 0 12-12" fill="currentColor" />
-                        </svg>
-                  </div>
+                  <button onClick={() => handleDownload(photoid)} className="button">
+                        <div className="button-outer">
+                              <div className="button-inner">
+                                    <span>Download</span>
+                              </div>
+                        </div>
+                  </button>
             </StyledWrapper>
       );
 };
 
 const StyledWrapper = styled.div`
-      div {
-            width: 65%;
-            color: rgba(0, 0, 0, 1);
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.397);
-            background: rgba(0, 0, 0, 0.068);
-            overflow: hidden;
-            font-size: 1rem;
-            font-weight: 600;
-            gap: 10px;
-            border-radius: 5px;
-            margin: 0 5px;
-            transition: 0.2s;
-            border: 1px solid transparent;
+      .button {
+            all: unset;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            position: relative;
+            border-radius: 100em;
+            background-color: rgba(0, 0, 0, 0.75);
+            box-shadow: -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25), 0.0375em 0.0375em 0.0675em 0 rgba(5, 5, 5, 0.1);
       }
 
-      a:hover {
-            border-color: rgba(0, 0, 0, 0.623);
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.144), rgba(0, 0, 0, 0.247), rgba(0, 0, 0, 0.39));
-            box-shadow: 0 6px rgba(0, 0, 0, 0.623);
-            transform: translateY(-6px);
+      .button::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            width: calc(100% + 0.3em);
+            height: calc(100% + 0.3em);
+            top: -0.15em;
+            left: -0.15em;
+            border-radius: inherit;
+            background: linear-gradient(-135deg, rgba(5, 5, 5, 0.5), transparent 20%, transparent 100%);
+            filter: blur(0.0125em);
+            opacity: 0.25;
+            mix-blend-mode: multiply;
       }
 
-      a:active {
-            transform: translateY(2px);
-            box-shadow: none;
+      .button .button-outer {
+            position: relative;
+            z-index: 1;
+            border-radius: inherit;
+            transition: box-shadow 300ms ease;
+            will-change: box-shadow;
+            box-shadow: 0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1), 0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5), 0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
+      }
+
+      .button:hover .button-outer {
+            box-shadow: 0 0 0 0 rgba(5, 5, 5, 1), 0 0 0 0 rgba(5, 5, 5, 0.5), 0 0 0 0 rgba(5, 5, 5, 0.25);
+      }
+
+      .button-inner {
+            --inset: 0.035em;
+            position: relative;
+            z-index: 1;
+            border-radius: inherit;
+            padding: 1em 1.5em;
+            background-image: linear-gradient(135deg, rgba(230, 230, 230, 1), rgba(180, 180, 180, 1));
+            transition: box-shadow 300ms ease, clip-path 250ms ease, background-image 250ms ease, transform 250ms ease;
+            will-change: box-shadow, clip-path, background-image, transform;
+            overflow: clip;
+            clip-path: inset(0 0 0 0 round 100em);
+            box-shadow:
+          /* 1 */ 0 0 0 0 inset rgba(5, 5, 5, 0.1), /* 2 */ -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25), /* 3 */ 0 0 0 0 inset rgba(5, 5, 5, 0.1), /* 4 */ 0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25), /* 5 */ 0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1), /* 6 */ 0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25), /* 7 */ -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+      }
+
+      .button:hover .button-inner {
+            clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em);
+            box-shadow:
+          /* 1 */ 0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75), /* 2 */ -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5), /* 3 */ 0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5), /* 4 */ 0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15), /* 5 */ 0 0 0 0 inset rgba(255, 255, 255, 1), /* 6 */ 0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25), /* 7 */ -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+      }
+
+      .button .button-inner span {
+            position: relative;
+            z-index: 4;
+            font-family: "Inter", sans-serif;
+            letter-spacing: -0.05em;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0);
+            background-image: linear-gradient(135deg, rgba(25, 25, 25, 1), rgba(75, 75, 75, 1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            transition: transform 250ms ease;
+            display: block;
+            will-change: transform;
+            text-shadow: rgba(0, 0, 0, 0.1) 0 0 0.1em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+      }
+
+      .button:hover .button-inner span {
+            transform: scale(0.975);
+      }
+
+      .button:active .button-inner {
+            transform: scale(0.975);
       }
 `;
 
