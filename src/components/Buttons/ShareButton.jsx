@@ -1,10 +1,7 @@
-import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-
 const ShareButton = () => {
-      const { pathname } = useLocation();
       const handleShare = () => {
-            window.navigator.clipboard.writeText(pathname);
+            window.navigator.clipboard.writeText(window.location.href);
       };
       return (
             <StyledWrapper>

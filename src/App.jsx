@@ -26,7 +26,7 @@ const App = () => {
                         sessionStorage.setItem("introPlayed", "true");
                   },
             });
-            preloader.to(preloaderText.current, { y: "0rem", delay: 0.3 }).to(preloaderText.current, { y: "-5rem" }, "+=0.2").to(preloaderContainer.current, { scaleY: 0, ease: "expo.inOut" });
+            preloader.to(preloaderText.current, { y: "0rem", delay: 0.6 }).to(preloaderText.current, { y: "-5rem" }, "+=0.2").to(preloaderContainer.current, { scaleY: 0, ease: "expo.inOut" });
             tlRef.current = preloader;
             return () => preloader.kill();
       });

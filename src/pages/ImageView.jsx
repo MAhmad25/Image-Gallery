@@ -101,7 +101,7 @@ const ImageView = () => {
                               <ImageStats Icon={LiaDownloadSolid} desc={"Downloads"} value={imgDetail.downloads} />
                               <ShareButton />
                         </div>
-                        <p className="text-black/90 mt-4 font-Nova">{(imgDetail?.description?.length > 7 && imgDetail.description) || imgDetail?.alt_description}</p>
+                        <p className="text-black/90 sm:text-xl mt-4 font-Nova">{(imgDetail?.description?.length > 7 && imgDetail.description) || imgDetail?.alt_description}</p>
                         <div className="mt-5">
                               {imgDetail?.location?.name && <Info Icon={IoLocationOutline} desc={"Location:  "} value={imgDetail?.location?.name} />}
                               <Info Icon={FaRegCalendar} desc={"Published on:  "} value={imgDetail?.created_at?.split("T")[0]} />

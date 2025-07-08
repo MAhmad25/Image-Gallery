@@ -4,10 +4,6 @@
       src: url(../fonts/primary.ttf);
 }
 @font-face {
-      font-family: Alliance;
-      src: url(../fonts/alliance.ttf);
-}
-@font-face {
       font-family: Fancy;
       src: url(../fonts/fancy.ttf);
 }
@@ -15,9 +11,14 @@
       font-family: Astralaga;
       src: url(../fonts/astralaga.ttf);
 }
+@font-face {
+      font-family: Search;
+      src: url(../fonts/search.ttf);
+}
 @theme {
       --font-Nova: "Nova";
       --font-alliance: "Alliance";
       --font-fancy: "Fancy";
       --font-Astralaga: "Astralaga";
+      --font-Search: "Search";
 }

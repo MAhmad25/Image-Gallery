@@ -1,12 +1,11 @@
 import Loader from "../components/Loaders/Loader";
 import Image from "./Image";
-import { useContext } from "react";
-import ImageContext from "../contexts/ImageContext";
 import LocomotiveScroll from "locomotive-scroll";
+import useFetchPhotos from "../hooks/useFetchPhotos";
 const CATEGORY = ["featured", "wallpaper", "3D", "pakistan", "nature", "people", "travel"];
 const MasonaryLayout = () => {
       new LocomotiveScroll();
-      const { category, setCategory, pictures, fetchMore } = useContext(ImageContext);
+      const { category, setCategory, pictures, fetchMore } = useFetchPhotos();
       return (
             <>
                   <section className="w-full flex overflow-x-scroll sm:justify-end  gap-2 items-center [&::-webkit-scrollbar]:hidden  py-5 sm:px-4 px-2 ">
