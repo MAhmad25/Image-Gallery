@@ -40,7 +40,7 @@ const Nav = () => {
                         },
                         "-=0.8"
                   );
-      }, []);
+      });
       return (
             <section className="w-full py-5 pr-7   flex justify-between  items-center  sm:px-20 ">
                   <CgMenuRightAlt className="rotate-180 scale-50 sm:scale-100 hidden cursor-pointer" size="2rem" color="#3D5557" />

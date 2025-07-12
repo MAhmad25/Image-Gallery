@@ -6,13 +6,12 @@ import ImageStats from "../components/ImageStats";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { IoLocationOutline } from "react-icons/io5";
 import { GrLike } from "react-icons/gr";
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import Download from "../components/Buttons/Download";
 import LikeButton from "../components/Buttons/LikeButton";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link, useParams } from "react-router-dom";
-import Image from "../components/Image";
 import Close from "../components/Buttons/CloseButton";
 import LiquidGlass from "../components/LiquidGlass";
 import Info from "../components/Info";
@@ -21,6 +20,7 @@ import ViewLoader from "../components/Loaders/ViewLoader";
 import useFetchDetail from "../hooks/useFetchDetail";
 import useFetchRelated from "../hooks/useFetchRelated";
 import ShareButton from "../components/Buttons/ShareButton";
+const Image = lazy(() => import("../components/Image"));
 const ImageView = () => {
       const { id } = useParams();
       new LocomotiveScroll();
@@ -120,7 +120,9 @@ const ImageView = () => {
                         <h1 className="tsm:ext-5xl text-3xl font-Nova">Related Images</h1>
                         <section className="w-full py-5 pb-10 columns-[250px]">
                               {relatedImage?.map((picture) => (
-                                    <Image key={picture.id} picture={picture} />
+                                    <Suspense fallback={<p className="mx-auto text-black w-full h-5">Loading Related Images</p>}>
+                                          <Image key={picture.id} picture={picture} />
+                                    </Suspense>
                               ))}
                         </section>
                   </section>
