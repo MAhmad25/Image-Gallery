@@ -13,13 +13,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link, useParams } from "react-router-dom";
 import Close from "../components/Buttons/CloseButton";
-import LiquidGlass from "../components/LiquidGlass";
+// import LiquidGlass from "../components/LiquidGlass";
 import Info from "../components/Info";
 import LocomotiveScroll from "locomotive-scroll";
 import ViewLoader from "../components/Loaders/ViewLoader";
 import useFetchDetail from "../hooks/useFetchDetail";
 import useFetchRelated from "../hooks/useFetchRelated";
 import ShareButton from "../components/Buttons/ShareButton";
+import imageAnimation from "../components/animation/imageAnimation";
 const Image = lazy(() => import("../components/Image"));
 const ImageView = () => {
       const { id } = useParams();
@@ -38,28 +39,17 @@ const ImageView = () => {
       });
       useGSAP(
             () => {
-                  if (!mask.current || !img.current) return;
-                  let tl = gsap.timeline({ defaults: { duration: 1.3, ease: "expo.inOut" } });
-                  tl.to(mask.current, {
-                        scaleY: 0,
-                        delay: 0.3,
-                  }).to(
-                        img.current,
-                        {
-                              scale: 1,
-                        },
-                        "-=.9"
-                  );
+                  let master = gsap.timeline();
+                  master.add(imageAnimation(img, mask));
             },
             { dependencies: [imgDetail], revertOnUpdate: true }
       );
-
       useEffect(() => {
             window.scrollTo(0, 0);
       }, [id]);
       return Object.keys(imgDetail).length > 0 ? (
             <section className="w-full bg-white overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative">
-                  <LiquidGlass />
+                  {/* <LiquidGlass /> */}
                   <div className="fixed z-20 top-3 right-3">
                         <Close />
                   </div>
