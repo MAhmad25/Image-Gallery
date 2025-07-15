@@ -10,10 +10,12 @@ import preloadWords from "../PreloaderText";
 const App = () => {
       const preloaderContainer = useRef(null);
       const preloadDiv = useRef(null);
+      const loaderDiv = useRef(null);
+      const percentage = useRef(null);
       const tlRef = useRef(null);
       useGSAP(() => {
             const hasIntro = sessionStorage.getItem("introPlayed");
-            if (hasIntro) {
+            if (!hasIntro) {
                   gsap.set(preloaderContainer.current, { autoAlpha: 0 });
                   return;
             }
@@ -30,6 +32,37 @@ const App = () => {
                   yPercent: -40,
                   duration: 7,
             })
+                  .to(
+                        loaderDiv.current,
+                        {
+                              width: "100%",
+                              duration: 7,
+                              ease: "expo.inOut",
+                        },
+                        "<"
+                  )
+                  .to(
+                        percentage.current,
+                        {
+                              textContent: 100,
+                              ease: "power1.inOut",
+                              duration: 6,
+                              snap: { textContent: 1 },
+                        },
+                        "<"
+                  )
+                  .to(percentage.current, {
+                        y: 100,
+                        autoAlpha: 0,
+                        ease: "power2.inOut",
+                  })
+                  .to(
+                        loaderDiv.current,
+                        {
+                              scaleY: 0,
+                        },
+                        "-=.4"
+                  )
                   .to(preloadDiv.current, {
                         autoAlpha: 0,
                         duration: 0.4,
@@ -47,13 +80,18 @@ const App = () => {
                   <div ref={preloaderContainer} className="overflow-hidden origin-top w-full fixed top-0 left-0 h-screen z-50   grid place-content-center bg-zinc-100">
                         <div className=" flex w-40 h-screen relative  px-1 flex-col">
                               {/* Overlay */}
-                              <div className="absolute overlay inset-0 z-50"></div>
+                              <div className="absolute overlay inset-0 z-20"></div>
                               {/* Words Container */}
                               <div ref={preloadDiv} className="-translate-y-200">
                                     {preloadWords.map((word) => (
                                           <h2 className="text-2xl sm:text-3xl   font-Astralaga text-zinc-800 ">{word}</h2>
                                     ))}
                               </div>
+                        </div>
+                        <div ref={loaderDiv} className="absolute overflow-hidden origin-bottom bottom-0  w-0 h-20 z-30 flex justify-end items-center  bg-zinc-800">
+                              <h2 ref={percentage} className="font-Astralaga  text-white mr-5 text-2xl sm:text-3xl md:text-4xl">
+                                    0
+                              </h2>
                         </div>
                   </div>
                   <Routes>
@@ -74,19 +112,3 @@ const App = () => {
 };
 
 export default App;
-{
-      {
-            /* For Debugging Purpose Only */
-      }
-      {
-            /* <div className="fixed top-0 left-10 px-5 z-30 py-2 rounded-4xl bg-black text-white font-Nova text-sm">{currWidth}px</div> */
-      }
-      /* For Debugging Purpose Only  
-             const [currWidth, setCurrWidth] = useState(window.innerWidth);
-      const handleResize = (e) => {
-            setCurrWidth(e.target.innerWidth);
-      };
-      useEffect(() => {
-            window.addEventListener("resize", handleResize);
-      }, []);*/
-}
