@@ -15,7 +15,7 @@ const App = () => {
       const tlRef = useRef(null);
       useGSAP(() => {
             const hasIntro = sessionStorage.getItem("introPlayed");
-            if (!hasIntro) {
+            if (hasIntro) {
                   gsap.set(preloaderContainer.current, { autoAlpha: 0 });
                   return;
             }
