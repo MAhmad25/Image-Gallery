@@ -15,6 +15,11 @@
       font-family: Search;
       src: url(../fonts/search.ttf);
 }
+.overlay {
+      background: #f4f4f5;
+      background: linear-gradient(0deg, rgba(244, 244, 245, 1) 0%, rgba(244, 244, 245, 1) 20%, rgba(244, 244, 245, 0.9) 45%, rgba(244, 244, 245, 0) 50%, rgba(244, 244, 245, 0.9) 55%, rgba(244, 244, 245, 1) 81%, rgba(244, 244, 245, 1) 100%);
+}
+
 @theme {
       --font-Nova: "Nova";
       --font-alliance: "Alliance";

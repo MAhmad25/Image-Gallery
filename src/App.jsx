@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import ImageView from "./pages/ImageView";
-import LocomotiveScroll from "locomotive-scroll";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import { Toaster } from "react-hot-toast";
+import preloadWords from "../PreloaderText";
 const App = () => {
-      const preloaderText = useRef(null);
       const preloaderContainer = useRef(null);
+      const preloadDiv = useRef(null);
       const tlRef = useRef(null);
       useGSAP(() => {
             const hasIntro = sessionStorage.getItem("introPlayed");
@@ -18,26 +18,43 @@ const App = () => {
                   return;
             }
             if (tlRef.current) tlRef.current.kill();
-            gsap.set([document.documentElement, document.body], { overflow: "hidden", height: "100vh" });
-            const preloader = gsap.timeline({
-                  defaults: { duration: 1, ease: "power1.inOut" },
+            let tl = gsap.timeline({
+                  defaults: { ease: "expo.inOut" },
                   onComplete: () => {
                         gsap.set([document.documentElement, document.body], { overflow: "auto", height: "auto" });
                         sessionStorage.setItem("introPlayed", "true");
                   },
             });
-            preloader.to(preloaderText.current, { y: "0rem", delay: 0.6 }).to(preloaderText.current, { y: "-5rem" }, "+=0.2").to(preloaderContainer.current, { scaleY: 0, ease: "expo.inOut" });
-            tlRef.current = preloader;
-            return () => preloader.kill();
+            gsap.set([document.documentElement, document.body], { overflow: "hidden", height: "100vh" });
+            tl.to(preloadDiv.current, {
+                  yPercent: -40,
+                  duration: 7,
+            })
+                  .to(preloadDiv.current, {
+                        autoAlpha: 0,
+                        duration: 0.4,
+                        ease: "expo.in",
+                  })
+                  .to(preloaderContainer.current, {
+                        scaleY: 0,
+                        duration: 0.8,
+                  });
+            tlRef.current = tl;
+            return () => tl.kill();
       });
       return (
             <main className="w-full  min-h-screen isolate relative  flex flex-col ">
-                  <div ref={preloaderContainer} className="container-preloader origin-top w-full fixed top-0 left-0 z-50 h-screen  grid place-content-center bg-zinc-900">
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl  overflow-hidden py-2  font-Astralaga text-white ">
-                              <span ref={preloaderText} className="inline-block translate-y-20   leading-0">
-                                    Welcome to Image Gallery
-                              </span>
-                        </h1>
+                  <div ref={preloaderContainer} className="overflow-hidden origin-top w-full fixed top-0 left-0 h-screen z-50   grid place-content-center bg-zinc-100">
+                        <div className=" flex w-40 h-screen relative  px-1 flex-col">
+                              {/* Overlay */}
+                              <div className="absolute overlay inset-0 z-50"></div>
+                              {/* Words Container */}
+                              <div ref={preloadDiv} className="-translate-y-200">
+                                    {preloadWords.map((word) => (
+                                          <h2 className="text-2xl sm:text-3xl   font-Astralaga text-zinc-800 ">{word}</h2>
+                                    ))}
+                              </div>
+                        </div>
                   </div>
                   <Routes>
                         <Route path="/" element={<Home />} />
