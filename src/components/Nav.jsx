@@ -4,7 +4,7 @@ import { memo, useRef } from "react";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import navAnimation from "./animation/navAnimation";
+import navAnimation from "../animation/navAnimation";
 const Nav = () => {
       const title1 = useRef(null);
       const desc = useRef(null);

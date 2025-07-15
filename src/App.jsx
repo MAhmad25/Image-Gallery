@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { Toaster } from "react-hot-toast";
 import preloadWords from "../PreloaderText";
+import IntroTextAnimation from "./animation/IntroAnimation";
 const App = () => {
       const preloaderContainer = useRef(null);
       const preloadDiv = useRef(null);
@@ -20,60 +21,15 @@ const App = () => {
                   return;
             }
             if (tlRef.current) tlRef.current.kill();
-            let tl = gsap.timeline({
-                  defaults: { ease: "expo.inOut" },
+            let master = gsap.timeline({
                   onComplete: () => {
                         gsap.set([document.documentElement, document.body], { overflow: "auto", height: "auto" });
                         sessionStorage.setItem("introPlayed", "true");
                   },
             });
-            gsap.set([document.documentElement, document.body], { overflow: "hidden", height: "100vh" });
-            tl.to(preloadDiv.current, {
-                  yPercent: -40,
-                  duration: 7,
-            })
-                  .to(
-                        loaderDiv.current,
-                        {
-                              width: "100%",
-                              duration: 7,
-                              ease: "expo.inOut",
-                        },
-                        "<"
-                  )
-                  .to(
-                        percentage.current,
-                        {
-                              textContent: 100,
-                              ease: "power1.inOut",
-                              duration: 6,
-                              snap: { textContent: 1 },
-                        },
-                        "<"
-                  )
-                  .to(percentage.current, {
-                        y: 100,
-                        autoAlpha: 0,
-                        ease: "power2.inOut",
-                  })
-                  .to(
-                        loaderDiv.current,
-                        {
-                              scaleY: 0,
-                        },
-                        "-=.4"
-                  )
-                  .to(preloadDiv.current, {
-                        autoAlpha: 0,
-                        duration: 0.4,
-                        ease: "expo.in",
-                  })
-                  .to(preloaderContainer.current, {
-                        scaleY: 0,
-                        duration: 0.8,
-                  });
-            tlRef.current = tl;
-            return () => tl.kill();
+            master.add(IntroTextAnimation(preloaderContainer, preloadDiv, loaderDiv, percentage));
+            tlRef.current = master;
+            return () => master.kill();
       });
       return (
             <main className="w-full  min-h-screen isolate relative  flex flex-col ">
@@ -89,7 +45,7 @@ const App = () => {
                               </div>
                         </div>
                         <div ref={loaderDiv} className="absolute overflow-hidden origin-bottom bottom-0  w-0 h-20 z-30 flex justify-end items-center  bg-zinc-800">
-                              <h2 ref={percentage} className="font-Astralaga  text-white mr-5 text-2xl sm:text-3xl md:text-4xl">
+                              <h2 ref={percentage} className="font-Astralaga text-white mr-5 text-2xl sm:text-3xl md:text-4xl">
                                     0
                               </h2>
                         </div>

@@ -20,7 +20,7 @@ import ViewLoader from "../components/Loaders/ViewLoader";
 import useFetchDetail from "../hooks/useFetchDetail";
 import useFetchRelated from "../hooks/useFetchRelated";
 import ShareButton from "../components/Buttons/ShareButton";
-import imageAnimation from "../components/animation/imageAnimation";
+import imageAnimation from "../animation/imageAnimation";
 const Image = lazy(() => import("../components/Image"));
 const ImageView = () => {
       const { id } = useParams();
