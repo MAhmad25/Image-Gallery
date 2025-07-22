@@ -34,11 +34,11 @@ const App = () => {
       return (
             <main className="w-full  min-h-screen isolate relative  flex flex-col ">
                   <div ref={preloaderContainer} className="overflow-hidden origin-top w-full fixed top-0 left-0 h-screen z-50   grid place-content-center bg-zinc-100">
-                        <div className=" flex w-40 h-screen relative  px-1 flex-col">
+                        <div className=" flex w-60 h-screen relative  px-1 flex-col">
                               {/* Overlay */}
-                              <div className="absolute overlay inset-0 z-20"></div>
+                              <div className="absolute overlay  inset-0 z-20"></div>
                               {/* Words Container */}
-                              <div ref={preloadDiv} className="-translate-y-200">
+                              <div ref={preloadDiv} className="-translate-y-100">
                                     {preloadWords.map((word) => (
                                           <h2 className="text-2xl sm:text-3xl   font-Astralaga text-zinc-800 ">{word}</h2>
                                     ))}
