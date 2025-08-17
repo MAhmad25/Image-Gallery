@@ -19,7 +19,10 @@
       background: #f4f4f5;
       background: linear-gradient(0deg, rgba(244, 244, 245, 1) 0%, rgba(244, 244, 245, 1) 20%, rgba(244, 244, 245, 0.9) 45%, rgba(244, 244, 245, 0) 50%, rgba(244, 244, 245, 0.9) 55%, rgba(244, 244, 245, 1) 81%, rgba(244, 244, 245, 1) 100%);
 }
-
+body {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxnIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIG9wYWNpdHk9IjAuMDUiLz48L2c+PGZpbHRlciBpZD0ibm9pc2VGaWx0ZXIiPjxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjc1JyBudW1PY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PC9zdmc+");
+      background-size: cover;
+}
 @theme {
       --font-Nova: "Nova";
       --font-alliance: "Alliance";

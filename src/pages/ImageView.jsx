@@ -48,7 +48,13 @@ const ImageView = () => {
             window.scrollTo(0, 0);
       }, [id]);
       return Object.keys(imgDetail).length > 0 ? (
-            <section className="w-full bg-white overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative">
+            <section
+                  style={{
+                        backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxnIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIG9wYWNpdHk9IjAuMDUiLz48L2c+PGZpbHRlciBpZD0ibm9pc2VGaWx0ZXIiPjxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjc1JyBudW1PY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PC9zdmc+")`,
+                        backgroundSize: "cover",
+                  }}
+                  className="w-full bg-white overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative"
+            >
                   {/* <LiquidGlass /> */}
                   <div className="fixed z-20 top-3 right-3">
                         <Close />
