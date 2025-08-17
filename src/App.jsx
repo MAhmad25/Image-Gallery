@@ -44,7 +44,14 @@ const App = () => {
                                     ))}
                               </div>
                         </div>
-                        <div ref={loaderDiv} className="absolute overflow-hidden origin-bottom bottom-0  w-0 h-20 z-30 flex justify-end items-center  bg-zinc-800">
+                        <div
+                              style={{
+                                    backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxnIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIG9wYWNpdHk9IjAuMDUiLz48L2c+PGZpbHRlciBpZD0ibm9pc2VGaWx0ZXIiPjxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjc1JyBudW1PY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PC9zdmc+")`,
+                                    backgroundSize: "cover",
+                              }}
+                              ref={loaderDiv}
+                              className="absolute overflow-hidden origin-bottom bottom-0  w-0 h-20 z-30 flex justify-end items-center  bg-zinc-800"
+                        >
                               <h2 ref={percentage} className="font-Astralaga text-white mr-5 text-2xl sm:text-3xl md:text-4xl">
                                     0
                               </h2>
