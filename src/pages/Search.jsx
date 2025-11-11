@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import Image from "../components/Image";
+import NoiseFilter from "../components/NoiseFilter";
 import Close from "../components/Buttons/CloseButton";
 import { useGSAP } from "@gsap/react";
 import useSearchQuery from "../hooks/useSearchQuery";
@@ -25,20 +26,15 @@ const Search = () => {
             });
       });
       return (
-            <section
-                  style={{
-                        backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxnIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIG9wYWNpdHk9IjAuMDUiLz48L2c+PGZpbHRlciBpZD0ibm9pc2VGaWx0ZXIiPjxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjc1JyBudW1PY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PC9zdmc+")`,
-                        backgroundSize: "cover",
-                  }}
-                  className="w-full min-h-screen relative px-5 min-[500px]:px-6 sm:px-10 bg-zinc-100"
-            >
+            <section className="w-full min-h-screen relative px-5 min-[500px]:px-6 sm:px-10 bg-zinc-100">
+                  <NoiseFilter />
                   <div className=" fixed z-10 top-3 right-3">
                         <Close />
                   </div>
                   {/* Search Div */}
                   <div className="w-full  py-10 relative  px-0 min-[500px]:px-8 items-start sm:px-10 md:px-16  flex  justify-center md:items-center sm:items-start flex-col">
                         <label htmlFor="search"></label>
-                        <input value={query} onChange={(e) => setQuery(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} className="font-Search  caret-zinc-700 py-2 w-full min-[500px]:w-3/4 font-medium md:w-full lg:w-3/4  outline-none px-1  lg:pr-28 pr-32 text-2xl min-[500px]:text-3xl sm:text-4xl lg:text-7xl border-none " name="search" type="text" placeholder="What do you Like?" />
+                        <input value={query} onChange={(e) => setQuery(e.target.value)} onBlur={handleBlur} onFocus={handleFocus} autoComplete="off" className="font-Search  caret-zinc-700 py-2 w-full min-[500px]:w-3/4 font-medium md:w-full lg:w-3/4  outline-none px-1  lg:pr-28 pr-32 text-2xl min-[500px]:text-3xl sm:text-4xl lg:text-7xl border-none " name="search" type="text" placeholder="What do you Like?" />
                         <button onClick={() => showQueryResults(query)} className="bg-zinc-800 text-sm min-[500px]:text-xl sm:text-2xl absolute top-[35%] right-10 min-[500px]:right-7 sm:right-10 md:right-14 lg:right-40 xl:right-48 px-4 font-Nova text-white py-1 rounded-4xl">
                               Search
                         </button>

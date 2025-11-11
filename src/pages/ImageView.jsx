@@ -21,6 +21,7 @@ import useFetchDetail from "../hooks/useFetchDetail";
 import useFetchRelated from "../hooks/useFetchRelated";
 import ShareButton from "../components/Buttons/ShareButton";
 import imageAnimation from "../animation/imageAnimation";
+import NoiseFilter from "../components/NoiseFilter";
 const Image = lazy(() => import("../components/Image"));
 const ImageView = () => {
       const { id } = useParams();
@@ -48,13 +49,8 @@ const ImageView = () => {
             window.scrollTo(0, 0);
       }, [id]);
       return Object.keys(imgDetail).length > 0 ? (
-            <section
-                  style={{
-                        backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxnIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIG9wYWNpdHk9IjAuMDUiLz48L2c+PGZpbHRlciBpZD0ibm9pc2VGaWx0ZXIiPjxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjc1JyBudW1PY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PC9zdmc+")`,
-                        backgroundSize: "cover",
-                  }}
-                  className="w-full bg-white overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative"
-            >
+            <section className="w-full bg-[#EEEEEE] overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative">
+                  <NoiseFilter />
                   {/* <LiquidGlass /> */}
                   <div className="fixed z-20 top-3 right-3">
                         <Close />
@@ -106,7 +102,7 @@ const ImageView = () => {
                         <div className="mt-5 flex flex-wrap sm:w-3/4 gap-2 ">
                               {imgDetail?.tags?.map((tag, index) => (
                                     <Link to={"/search-for-photo"} key={index} className="shrink-0">
-                                          <div className="py-1 px-3 text-sm sm:text-lg sm:py-2 sm:px-4 rounded-md font-Nova text-[#555555]  bg-[#EEEEEE]">{tag.title}</div>
+                                          <div className="py-1 px-3 text-sm sm:text-lg sm:py-2 sm:px-4 rounded-md font-Nova text-[#555555]  bg-white">{tag.title}</div>
                                     </Link>
                               ))}
                         </div>

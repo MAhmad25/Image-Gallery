@@ -5,6 +5,7 @@ import Search from "./pages/Search";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import NoiseFilter from "./components/NoiseFilter";
 import { Toaster } from "react-hot-toast";
 import preloadWords from "../PreloaderText";
 import IntroTextAnimation from "./animation/IntroAnimation";
@@ -33,6 +34,7 @@ const App = () => {
       });
       return (
             <main className="w-full  min-h-screen isolate relative  flex flex-col ">
+                  <NoiseFilter />
                   <div ref={preloaderContainer} className="overflow-hidden origin-top w-full fixed top-0 left-0 h-screen z-50   grid place-content-center bg-zinc-100">
                         <div className=" flex w-60 h-screen relative  px-1 flex-col">
                               {/* Overlay */}
@@ -44,14 +46,7 @@ const App = () => {
                                     ))}
                               </div>
                         </div>
-                        <div
-                              style={{
-                                    backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxnIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIG9wYWNpdHk9IjAuMDUiLz48L2c+PGZpbHRlciBpZD0ibm9pc2VGaWx0ZXIiPjxmZVR1cmJ1bGVuY2UgdHlwZT0nZnJhY3RhbE5vaXNlJyBiYXNlRnJlcXVlbmN5PScwLjc1JyBudW1PY3RhdmVzPSczJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PC9maWx0ZXI+PC9zdmc+")`,
-                                    backgroundSize: "cover",
-                              }}
-                              ref={loaderDiv}
-                              className="absolute overflow-hidden origin-bottom bottom-0  w-0 h-10 z-30 flex justify-end items-center  bg-zinc-800"
-                        >
+                        <div ref={loaderDiv} className="absolute overflow-hidden origin-bottom bottom-0  w-0 h-10 z-30 flex justify-end items-center  bg-zinc-800">
                               <h2 ref={percentage} className="font-Astralaga text-white mr-5 text-2xl sm:text-3xl md:text-4xl">
                                     0
                               </h2>
