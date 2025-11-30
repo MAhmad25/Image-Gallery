@@ -10,7 +10,7 @@ const MasonaryLayout = () => {
             <>
                   <section className="w-full flex overflow-x-scroll sm:justify-end  gap-2 items-center [&::-webkit-scrollbar]:hidden  py-5 sm:px-4 px-2 ">
                         {CATEGORY.map((type, index) => (
-                              <button key={index} onClick={() => setCategory(type)} className={`${category === type ? "bg-black text-white" : "text-black"} font-Nova capitalize transition text-sm sm:text-[1rem]   whitespace-nowrap  hover:bg-black  hover:text-white rounded-2xl sm:rounded-4xl  border-[1px] px-3 py-1 border-zinc-800`}>
+                              <button key={index} onClick={() => setCategory(type)} className={`${category === type ? "bg-black text-white" : "text-black dark:text-white dark:hover:bg-white dark:hover:text-black"} font-Nova capitalize transition text-sm sm:text-[1rem]   whitespace-nowrap  hover:bg-black  hover:text-white rounded-2xl sm:rounded-4xl  border-[1px] px-3 py-1 border-zinc-800`}>
                                     {type}
                               </button>
                         ))}

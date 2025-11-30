@@ -32,7 +32,7 @@ const Nav = () => {
                         </svg>
 
                         <div className="flex-11/12">
-                              <h1 ref={title1} className="sm:text-2xl  md:text-3xl lg:text-4xl text-[1.5rem]  hidden min-[500px]:text-[1.3rem]  min-[500px]:block  sm:block  font-Astralaga selection:bg-[#3D5557]/60  text-[#3D5557] sm:leading-none  font-semibold uppercase">
+                              <h1 ref={title1} className="sm:text-2xl dark:text-white  md:text-3xl lg:text-4xl text-[1.5rem]  hidden min-[500px]:text-[1.3rem]  min-[500px]:block  sm:block  font-Astralaga selection:bg-[#3D5557]/60  text-[#3D5557] sm:leading-none  font-semibold uppercase">
                                     way to explore more !
                               </h1>
                               <h1 className="text-[1.1rem]  min-[500px]:hidden    font-Astralaga selection:bg-[#3D5557]/60  text-[#3D5557] sm:leading-none  font-semibold uppercase">Image Gallery</h1>
@@ -42,7 +42,7 @@ const Nav = () => {
                         </div>
                   </div>
                   <Link to="/search-for-photo" ref={searchRef}>
-                        <IoSearchOutline className="cursor-pointer  mix-blend-difference scale-75 min-[500px]:scale-100 " size="2.5rem" color="#3D5557" />
+                        <IoSearchOutline className="cursor-pointer  mix-blend-difference dark:invert scale-75 min-[500px]:scale-100 " size="2.5rem" color="#3D5557" />
                   </Link>
             </section>
       );

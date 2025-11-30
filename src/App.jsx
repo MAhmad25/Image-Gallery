@@ -5,7 +5,6 @@ import Search from "./pages/Search";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
-import NoiseFilter from "./components/NoiseFilter";
 import { Toaster } from "react-hot-toast";
 import preloadWords from "../PreloaderText";
 import IntroTextAnimation from "./animation/IntroAnimation";
@@ -34,7 +33,6 @@ const App = () => {
       });
       return (
             <main className="w-full  min-h-screen isolate relative  flex flex-col ">
-                  <NoiseFilter />
                   <div ref={preloaderContainer} className="overflow-hidden origin-top w-full fixed top-0 left-0 h-screen z-50   grid place-content-center bg-zinc-100">
                         <div className=" flex w-60 h-screen relative  px-1 flex-col">
                               {/* Overlay */}
