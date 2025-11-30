@@ -21,7 +21,6 @@ import useFetchDetail from "../hooks/useFetchDetail";
 import useFetchRelated from "../hooks/useFetchRelated";
 import ShareButton from "../components/Buttons/ShareButton";
 import imageAnimation from "../animation/imageAnimation";
-import NoiseFilter from "../components/NoiseFilter";
 const Image = lazy(() => import("../components/Image"));
 const ImageView = () => {
       const { id } = useParams();
@@ -50,7 +49,6 @@ const ImageView = () => {
       }, [id]);
       return Object.keys(imgDetail).length > 0 ? (
             <section className="w-full bg-[#EEEEEE] overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative">
-                  <NoiseFilter />
                   {/* <LiquidGlass /> */}
                   <div className="fixed z-20 top-3 right-3">
                         <Close />
