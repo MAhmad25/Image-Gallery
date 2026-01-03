@@ -24,19 +24,14 @@ import imageAnimation from "../animation/imageAnimation";
 const Image = lazy(() => import("../components/Image"));
 const ImageView = () => {
       const { id } = useParams();
-      new LocomotiveScroll();
+      useEffect(() => {
+            const loco = new LocomotiveScroll();
+            return () => loco?.destroy();
+      }, []);
       const { imgDetail } = useFetchDetail(id);
       const { relatedImage } = useFetchRelated(id);
       const mask = useRef(null);
       const img = useRef(null);
-      const likecta = useRef(null);
-      const { contextSafe } = useGSAP();
-      const show = contextSafe(() => {
-            gsap.set(likecta.current, { scale: 1 });
-      });
-      const hide = contextSafe(() => {
-            gsap.set(likecta.current, { scale: 0 });
-      });
       useGSAP(
             () => {
                   let master = gsap.timeline();
@@ -46,7 +41,7 @@ const ImageView = () => {
       );
       useEffect(() => {
             window.scrollTo(0, 0);
-      }, [id]);
+      }, [imgDetail]);
       return Object.keys(imgDetail).length > 0 ? (
             <section className="w-full bg-[#EEEEEE] overflow-hidden [&::-webkit-scrollbar]:hidden  scroll-smooth relative">
                   {/* <LiquidGlass /> */}
@@ -74,12 +69,9 @@ const ImageView = () => {
                               </div>
                         </div>
                         {/* Image Section */}
-                        <section onMouseEnter={show} onMouseLeave={hide} className={`${imgDetail?.width >= imgDetail?.height ? "columns-[400px] sm:columns-[600px]" : "columns-[250px] sm:columns-[300px]"}  sm:order-2   overflow-hidden h-[50vh] sm:h-[75vh]  min-[550px]:h-[50vh] relative shrink-0`}>
+                        <section className={`${imgDetail?.width >= imgDetail?.height ? "columns-[400px] sm:columns-[600px]" : "columns-[250px] sm:columns-[300px]"}  sm:order-2   overflow-hidden h-[50vh] sm:h-[75vh]  min-[550px]:h-[50vh] relative shrink-0`}>
                               {/* min-[550px]:w-1/2 sm:w-[80%] w-3/4  */}
                               <div ref={mask} className="absolute origin-top z-40 w-full h-full top-0 left-0 bg-black"></div>
-                              <div ref={likecta} className="absolute scale-0 place-content-center grid top-0 left-0  z-10 w-full h-full bg-black/10">
-                                    <LikeButton />
-                              </div>
                               <img ref={img} data-scroll data-scroll-speed="-0.2" className="scale-125 h-full absolute object-cover" src={imgDetail?.urls?.regular} width={imgDetail?.width} height={imgDetail?.height} alt={imgDetail?.alt_description} />
                         </section>
                   </section>
